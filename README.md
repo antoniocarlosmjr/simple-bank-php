@@ -3,7 +3,7 @@ This API RESTFul responsible for realize create/inative accounts, deposit, withd
 
 ### Technologies
 
-- PHP 7.4
+- PHP 8
 - Laravel/Lumen
 - Docker
 - MySQL 5.7
