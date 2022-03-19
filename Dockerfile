@@ -1,17 +1,13 @@
-FROM phpdockerio/php74-fpm:latest
+FROM php:8.0.0rc1-fpm
 
-# Fix debconf warnings upon build
-ARG DEBIAN_FRONTEND=noninteractive
+# Install system dependencies
+RUN apt-get update && apt-get install -y git
 
-# Install selected extensions and other stuff
-RUN apt-get update \
-    && apt-get -y --no-install-recommends install \
-    php7.4-mysql \
-    php7.4-bcmath \
-    php7.4-gd \
-    php7.4-imap \
-    php-yaml \
-    vim \
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql
 
-WORKDIR "/application"
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set working directory
+WORKDIR /var/www
