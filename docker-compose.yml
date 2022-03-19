@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  # PHP service
+  app:
+    build:
+      context: ./.docker
+      dockerfile: Dockerfile
+    container_name: app.simple-bank-php
+    working_dir: /var/www/
+    volumes:
+        - ./src:/var/www
+        - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - bubble
+
+  #MySQL database service
+  db:
+    image: mysql:5.7
+    container_name: mysql-db
+    ports:
+        - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: simple_bank_php
+    networks:
+        - bubble
+
+  # Nginx service
+  nginx:
+    image: nginx:alpine
+    container_name: php-nginx
+    ports:
+      - 8123:80
+    volumes:
+      - ./src:/var/www
+      - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - bubble
+
+networks:
+  bubble:
+    external: true
