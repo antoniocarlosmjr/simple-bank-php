@@ -15,15 +15,8 @@
 
 use Laravel\Lumen\Routing\Router;
 
-$router->get('/teste', function () use ($router) {
-    return $router->app->version();
-});
-
-$router->group(['prefix' => 'api/v1/'], function () use ($router) {
-    $router->get('reset', 'BankStatementController@index');
-    $router->get('balance', 'BankStatementController@store');
-    $router->post('balance', 'BankStatementController@reprocess');
-    $router->get('bank-statements/status', 'BankStatementController@status');
-    $router->get('bank-statements/download', 'BankStatementController@download');
-    $router->post('bank-statements/send-notification', 'BankStatementController@sendNotification');
+$router->get('/', function () use ($router) {
+    $router->post('reset', '');
+    $router->get('balance', 'AccountController@getBalance');
+    $router->post('event', 'EventController@store');
 });
