@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Contracts\ResetControllerInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
-class ResetController extends Controller
+class ResetController extends Controller implements ResetControllerInterface
 {
     public function reset(): Response
     {

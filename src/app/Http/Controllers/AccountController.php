@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Application\Services\AccountService;
+use App\Domain\Entities\Account\AccountEntity;
 use App\Http\Controllers\Contracts\AccountControllerInterface;
 use App\Http\Requests\AccountRequest;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
-class AccountController extends Controller implements AccountControllerInterface
+final class AccountController extends Controller implements AccountControllerInterface
 {
-    private AccountService $accountService;
-
     /**
      * @param AccountService $accountService
      */
-    public function __construct(AccountService $accountService)
-    {
-        $this->accountService = $accountService;
+    public function __construct(private AccountService $accountService){
     }
 
     /**
@@ -28,8 +26,14 @@ class AccountController extends Controller implements AccountControllerInterface
      */
     public function getBalance(AccountRequest $request): JsonResponse
     {
-        $data = $request->validated();
-        $balance = $this->accountService->getBalanceOfAccount($data['account_id']);
-        return response()->json($balance, Response::HTTP_OK);
+        try {
+            $data = $request->validated();
+            $entity = new AccountEntity();
+            $entity->setId((int)$data['account_id']);
+            $response = $this->accountService->getBalanceByAccount($entity);
+            return response()->json($response, Response::HTTP_OK);
+        } catch (Throwable $e) {
+            return response()->json(0, $e->getCode());
+        }
     }
 }

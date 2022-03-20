@@ -2,10 +2,19 @@
 
 namespace App\Application\Services;
 
+use App\Application\Repositories\AccountRepositoryInterface;
+use App\Domain\Entities\Account\AccountEntity;
+
 class AccountService
 {
-    public function getBalanceOfAccount(int $accountId)
+    public function __construct(
+        protected AccountRepositoryInterface $accountRepository,
+    ) {
+    }
+
+    public function getBalanceByAccount(AccountEntity $accountEntity): float
     {
-        return 'teste';
+        $account = $this->accountRepository->getAccountById($accountEntity);
+        return $account->getBalance();
     }
 }

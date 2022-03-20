@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Driver\Models\User;
 
 class UsersSeeder
 {
