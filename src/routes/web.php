@@ -18,5 +18,5 @@ use Laravel\Lumen\Routing\Router;
 $router->group(['prefix' => '/'], function () use ($router) {
     $router->post('reset', 'ResetController@reset');
     $router->get('balance', 'AccountController@getBalance');
-    $router->post('event', 'TransactionController@store');
+    $router->post('event', 'EventController@create');
 });

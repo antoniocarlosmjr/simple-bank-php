@@ -2,7 +2,7 @@
 
 namespace App\Enumerators;
 
-class TransactionStatusEnum
+class TransactionStatusEnum extends BaseEnum
 {
     public const STARTED = 'started';
     public const PROCESSING = 'processing';

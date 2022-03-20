@@ -2,7 +2,7 @@
 
 namespace App\Enumerators;
 
-class AccountTypesEnum
+class AccountTypesEnum extends BaseEnum
 {
     public const SAVING = 'saving';
     public const CHAIN = 'chain';

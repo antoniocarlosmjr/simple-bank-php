@@ -58,10 +58,20 @@ class AccountEntity extends DefaultEntity
         return $this;
     }
 
+    public function getCreatedAt(): DateTime
+    {
+        return $this->createdAt;
+    }
+
     public function setCreatedAt(DateTime $newDate): AccountEntity
     {
         $this->createdAt = $newDate;
         return $this;
+    }
+
+    public function getUpdatedAt(): DateTime
+    {
+        return $this->updatedAt;
     }
 
     public function setUpdatedAt(DateTime $updatedAt): AccountEntity

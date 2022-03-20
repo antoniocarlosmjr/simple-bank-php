@@ -7,6 +7,7 @@ use App\Domain\Entities\Account\AccountEntity;
 use App\Driver\Models\AccountModel;
 use App\Exceptions\AccountNotFoundException;
 use Exception;
+use Illuminate\Support\Collection;
 
 class AccountRepositoryDatabase implements AccountRepositoryInterface
 {
@@ -15,10 +16,19 @@ class AccountRepositoryDatabase implements AccountRepositoryInterface
     ) {
     }
 
-    public function create(AccountEntity $accountEntity): AccountEntity
+    /**
+     * Create a new account
+     *
+     * @param AccountEntity $entity
+     * @return AccountEntity
+     */
+    public function create(AccountEntity $entity): AccountEntity
     {
-        // TODO: Implement createAccount() method.
-        return $accountEntity;
+        $modelRegister = $this->accountModelEloquent::create($entity->toArray());
+        $register = $this->transformPayload(
+            collect([$modelRegister])
+        )->collapse()->all();
+        return $entity->fill($register);
     }
 
     /**
@@ -35,5 +45,21 @@ class AccountRepositoryDatabase implements AccountRepositoryInterface
             throw new AccountNotFoundException();
         }
         return $entity->fill($register->toArray());
+    }
+
+    /**
+     * Transform payload return
+     *
+     * @param Collection $collect
+     * @return Collection
+     */
+    private function transformPayload(Collection $collect): Collection
+    {
+        return $collect->transform(function ($item) {
+            return [
+                'id' => $item->id,
+                'balance' => $item->balance,
+            ];
+        });
     }
 }
