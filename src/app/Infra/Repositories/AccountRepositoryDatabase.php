@@ -62,4 +62,17 @@ class AccountRepositoryDatabase implements AccountRepositoryInterface
             ];
         });
     }
+
+    /**
+     * Update of the account
+     *
+     * @param AccountEntity $entity
+     * @return AccountEntity
+     * @throws AccountNotFoundException
+     */
+    public function update(AccountEntity $entity): AccountEntity
+    {
+        $this->accountModelEloquent::where(['id' => $entity->getId()])->update($entity->toArray());
+        return $this->getAccountById($entity);
+    }
 }

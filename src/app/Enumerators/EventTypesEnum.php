@@ -2,7 +2,7 @@
 
 namespace App\Enumerators;
 
-class TransactionTypesEnum extends BaseEnum
+class EventTypesEnum extends BaseEnum
 {
     public const DEPOSIT = 'deposit';
     public const WITHDRAW = 'withdraw';

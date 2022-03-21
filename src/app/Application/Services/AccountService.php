@@ -17,4 +17,14 @@ class AccountService
         $account = $this->accountRepository->getAccountById($accountEntity);
         return $account->getBalance();
     }
+
+    public function increaseMoney()
+    {
+
+    }
+
+    public function decreaseMoney()
+    {
+
+    }
 }

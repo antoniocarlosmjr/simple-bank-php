@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('type', 20)->nullable(false);
             $table->string('status', 20)->nullable(false);
-            $table->bigInteger('account_id')->nullable(false);
+            $table->bigInteger('account_id_origin');
+            $table->bigInteger('account_id_destination');
+            $table->float('amount')->nullable(false)->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('events');
     }
 };

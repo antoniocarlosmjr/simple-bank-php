@@ -6,6 +6,7 @@ use App\Domain\Entities\Account\AccountEntity;
 
 interface AccountRepositoryInterface
 {
-    public function create(AccountEntity $accountEntity): AccountEntity;
-    public function getAccountById(AccountEntity $accountEntity): AccountEntity;
+    public function create(AccountEntity $entity): AccountEntity;
+    public function getAccountById(AccountEntity $entity): AccountEntity;
+    public function update(AccountEntity $entity): AccountEntity;
 }

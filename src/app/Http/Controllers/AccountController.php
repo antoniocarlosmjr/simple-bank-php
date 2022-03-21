@@ -6,9 +6,9 @@ use App\Application\Services\AccountService;
 use App\Domain\Entities\Account\AccountEntity;
 use App\Http\Controllers\Contracts\AccountControllerInterface;
 use App\Http\Requests\AccountRequest;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Throwable;
 
 final class AccountController extends Controller implements AccountControllerInterface
 {
@@ -32,8 +32,8 @@ final class AccountController extends Controller implements AccountControllerInt
             $entity->setId((int)$data['account_id']);
             $response = $this->accountService->getBalanceByAccount($entity);
             return response()->json($response, Response::HTTP_OK);
-        } catch (Throwable $e) {
-            return response()->json(0, $e->getCode());
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), $e->getCode());
         }
     }
 }
