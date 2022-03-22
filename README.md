@@ -1,5 +1,5 @@
 # simple-bank-php
-This API RESTFul is responsible for realize create/inative accounts, deposit, withdraws and transfer amount between accounts. 
+API RESTFul responsible for realize create accounts, deposit, withdraws and transfer amount between accounts. 
 
 ### Technologies
 
