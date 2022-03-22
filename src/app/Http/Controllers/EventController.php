@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Application\Services\EventService;
+use App\Application\Services\Event\EventService;
 use App\Domain\Entities\Event\EventEntity;
 use App\Enumerators\EventStatusEnum;
 use App\Http\Controllers\Contracts\EventControllerInterface;
@@ -28,15 +28,15 @@ class EventController implements EventControllerInterface
             $data = $request->validated();
             $entityEvent = new EventEntity();
             $entityEvent->setType($data['type']);
-            $entityEvent->setOrigin((int)$data['origin']);
-            $entityEvent->setDestination((int)$data['destination']);
+            $entityEvent->setOrigin($data['origin'] ?? null);
+            $entityEvent->setDestination($data['destination'] ?? null);
             $entityEvent->setAmount((float)$data['amount']);
             $entityEvent->setStatus(EventStatusEnum::STARTED);
 
             $response = $this->eventService->createEvent($entityEvent);
-            return response()->json($response, Response::HTTP_CREATED);
+            return response()->json($response, Response::HTTP_OK);
         } catch (Exception $e) {
-            return response()->json($e->getMessage(), $e->getCode());
+            return response()->json($e->getMessage(), $e->getCode() ?: Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

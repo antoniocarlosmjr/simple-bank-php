@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Application\Services\AccountService;
+use App\Application\Services\Account\AccountService;
 use App\Domain\Entities\Account\AccountEntity;
 use App\Http\Controllers\Contracts\AccountControllerInterface;
 use App\Http\Requests\AccountRequest;

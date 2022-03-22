@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Services;
+namespace App\Application\Services\Account;
 
 use App\Application\Repositories\AccountRepositoryInterface;
 use App\Domain\Entities\Account\AccountEntity;

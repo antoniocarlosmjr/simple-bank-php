@@ -5,11 +5,11 @@ namespace App\Exceptions;
 use Exception;
 use Symfony\Component\HttpFoundation\Response;
 
-class AccountNotFoundException extends Exception
+class EventTypeInvalidException extends Exception
 {
     public function __construct(
-        string $message = 'account not found',
-        int $code = Response::HTTP_NOT_FOUND
+        string $message = 'type of event invalid',
+        int $code = Response::HTTP_UNPROCESSABLE_ENTITY
     ) {
         parent::__construct($message, $code);
     }
