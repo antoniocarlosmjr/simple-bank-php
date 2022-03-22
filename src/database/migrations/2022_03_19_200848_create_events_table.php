@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('type', 20)->nullable(false);
             $table->string('status', 20)->nullable(false);
-            $table->bigInteger('account_id_origin');
-            $table->bigInteger('account_id_destination');
+            $table->bigInteger('account_id_origin')->nullable(true);
+            $table->bigInteger('account_id_destination')->nullable(true);
             $table->float('amount')->nullable(false)->default(0);
             $table->timestamps();
         });

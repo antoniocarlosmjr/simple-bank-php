@@ -23,8 +23,6 @@ class EventRepositoryDatabase implements EventRepositoryInterface
     public function create(EventEntity $entity): EventEntity
     {
         $modelRegister = $this->eventModelEloquent::create($entity->toArray());
-        dd($entity->toArray());
-        dd($modelRegister);
         $register = $this->transformPayload(
             collect([$modelRegister])
         )->collapse()->all();

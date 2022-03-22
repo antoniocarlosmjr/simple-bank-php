@@ -15,7 +15,7 @@ class EventEntity extends DefaultEntity
     protected ?int $accountIdDestination;
     protected float $amount;
     protected Datetime $createdAt;
-    protected DateTime $updatedAt;
+    protected ?DateTime $updatedAt;
 
     public function getId(): int
     {
@@ -50,23 +50,23 @@ class EventEntity extends DefaultEntity
         return $this;
     }
 
-    public function getOrigin(): int
+    public function getAccountIdOrigin(): ?int
     {
         return $this->accountIdOrigin;
     }
 
-    public function setOrigin(?int $origin): EventEntity
+    public function setAccountIdOrigin(?int $origin): EventEntity
     {
         $this->accountIdOrigin = $origin;
         return $this;
     }
 
-    public function getDestination(): int
+    public function getAccountIdDestination(): ?int
     {
         return $this->accountIdDestination;
     }
 
-    public function setDestination(?int $accountDestination): EventEntity
+    public function setAccountIdDestination(?int $accountDestination): EventEntity
     {
         $this->accountIdDestination = $accountDestination;
         return $this;
