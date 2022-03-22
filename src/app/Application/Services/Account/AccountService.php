@@ -15,6 +15,13 @@ class AccountService
     ) {
     }
 
+    /**
+     * Return balance a account.
+     *
+     * @param AccountEntity $accountEntity
+     * @return float
+     * @throws AccountNotFoundException
+     */
     public function getBalanceByAccount(AccountEntity $accountEntity): float
     {
         $account = $this->accountRepository->getAccountById($accountEntity);
@@ -25,13 +32,27 @@ class AccountService
         throw new AccountNotFoundException();
     }
 
+    /**
+     * Create a new account with balance zero.
+     *
+     * @param AccountEntity $entity
+     * @return AccountEntity
+     */
     public function createInicialAccount(AccountEntity $entity): AccountEntity
     {
         $entity->setType(AccountTypesEnum::CHAIN);
         $entity->setActive(true);
+        $entity->setBalance(0);
         return $this->accountRepository->create($entity);
     }
 
+    /**
+     * Insert money in a account.
+     *
+     * @param AccountEntity $accountEntity
+     * @param float $amount
+     * @return AccountEntity
+     */
     public function increaseMoney(AccountEntity $accountEntity, float $amount): AccountEntity
     {
         $newBalance = $accountEntity->getBalance() + $amount;
@@ -39,6 +60,14 @@ class AccountService
         return $this->accountRepository->update($accountEntity);
     }
 
+    /**
+     * Decrease money in a account.
+     *
+     * @param AccountEntity $accountEntity
+     * @param float $amount
+     * @return AccountEntity
+     * @throws BalanceUnavailableForWithdrawalException
+     */
     public function decreaseMoney(AccountEntity $accountEntity, float $amount): AccountEntity
     {
         $balanceActual = $accountEntity->getBalance();

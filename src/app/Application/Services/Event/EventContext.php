@@ -12,6 +12,12 @@ class EventContext
     ) {
     }
 
+    /**
+     * Create some event.
+     *
+     * @param EventEntity $eventEntity
+     * @return array
+     */
     public function create(EventEntity $eventEntity): array
     {
         return $this->eventStrategy->create($eventEntity);

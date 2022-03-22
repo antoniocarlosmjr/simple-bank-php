@@ -14,12 +14,12 @@ class CreateEventRequest extends RequestAbstract
             'destination' => [
                 'string',
                 'required_if:type,' . EventTypesEnum::DEPOSIT,
-                'required_if:type,' . EventTypesEnum::TRANSFER
+                'required_if:type,' . EventTypesEnum::TRANSFER,
             ],
             'origin' => [
                 'string',
                 'required_if:type,' . EventTypesEnum::WITHDRAW,
-                'required_if:type,' . EventTypesEnum::TRANSFER
+                'required_if:type,' . EventTypesEnum::TRANSFER,
             ],
             'amount' => 'required|numeric|min:0.1'
         ];

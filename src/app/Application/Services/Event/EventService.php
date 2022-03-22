@@ -27,8 +27,8 @@ class EventService
     {
         $eventType = match ($eventEntity->getType()) {
             EventTypesEnum::DEPOSIT => new EventDepositStrategy($this->accountRepository, $this->eventRepository),
-            EventTypesEnum::TRANSFER => new EventTransferStrategy($this->accountRepository, $this->eventRepository),
             EventTypesEnum::WITHDRAW => new EventWithdrawStrategy($this->accountRepository, $this->eventRepository),
+            EventTypesEnum::TRANSFER => new EventTransferStrategy($this->accountRepository, $this->eventRepository),
             default => throw new EventTypeInvalidException(),
         };
 

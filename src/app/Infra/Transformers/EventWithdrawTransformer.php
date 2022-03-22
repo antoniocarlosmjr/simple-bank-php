@@ -4,12 +4,12 @@ namespace App\Infra\Transformers;
 
 use App\Domain\Entities\Account\AccountEntity;
 
-class EventDepositTransformer
+class EventWithdrawTransformer
 {
     public function transform(AccountEntity $accountEntity): array
     {
         return [
-            'destination' => [
+            'origin' => [
                 'id' => (string) $accountEntity->getId(),
                 'balance' => $accountEntity->getBalance()
             ]
