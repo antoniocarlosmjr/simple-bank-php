@@ -29,14 +29,14 @@ Okay, now we have our system running at http://localhost:8000. :smile:
 
 The flow and architecture of the project was created based on a clean architecture adaptation as shown in the figure below.
 
-![Simple Bank Php](https://user-images.githubusercontent.com/26749585/159628756-e15dea54-0000-47dd-b7ce-e8ad3ad52594.jpg)
+![Simple Bank Php (1)](https://user-images.githubusercontent.com/26749585/159628938-892753ad-ce9e-4ed9-a60b-89fe25ad6b89.jpg =250x250)
 
 
 ### Diagram of Database
 
 The relational project is structured according to the creation of four tables represented as follows:
 
-![simple_bank_php@localhost](https://user-images.githubusercontent.com/26749585/159618055-82711913-4f06-41de-9b69-cf0991130175.png)
+![simple_bank_php@localhost](https://user-images.githubusercontent.com/26749585/159618055-82711913-4f06-41de-9b69-cf0991130175.png =250x250)
 
 ### Documentation
 
