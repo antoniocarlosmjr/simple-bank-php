@@ -33,7 +33,7 @@ final class AccountController extends Controller implements AccountControllerInt
             $response = $this->accountService->getBalanceByAccount($entity);
             return response()->json($response, Response::HTTP_OK);
         } catch (Exception $e) {
-            return response()->json($e->getMessage(), $e->getCode());
+            return response()->json($e->getMessage(), $e->getCode() ?: Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Contracts;
 
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 interface ResetControllerInterface
 {

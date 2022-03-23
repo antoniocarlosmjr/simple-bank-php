@@ -36,7 +36,6 @@ class EventController implements EventControllerInterface
             $response = $this->eventService->createEvent($entityEvent);
             return response()->json($response, Response::HTTP_OK);
         } catch (Exception $e) {
-            //dd($e->getMessage());
             return response()->json($e->getMessage(), $e->getCode() ?: Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
