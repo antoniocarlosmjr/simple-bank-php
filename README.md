@@ -27,7 +27,10 @@ Okay, now we have our system running at http://localhost:8000. :smile:
 
 ### Diagram of Architecture
 
-Em desenvolvimento
+The flow and architecture of the project was created based on a clean architecture adaptation as shown in the figure below.
+
+![Simple Bank Php](https://user-images.githubusercontent.com/26749585/159628756-e15dea54-0000-47dd-b7ce-e8ad3ad52594.jpg)
+
 
 ### Diagram of Database
 
