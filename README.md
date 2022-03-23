@@ -14,7 +14,8 @@ Em desenvolvimento
 
 ### Tests
 
-Em desenvolvimento
+  * Testes automatizados
+  * Testes na plataforma adicionada
 
 ### Mapeamento Relacional
 
@@ -24,7 +25,8 @@ The relational project is structured according to the creation of four tables re
 
 ### Documentation
 
-Em desenvolvimento
+The documentation of the endpoints of this API can be seen either using the port http://localhost:8000 or accessing Swagger web:
+[Swagger Hub - API](https://app.swaggerhub.com/apis-docs/carlos12antoni/SimpleBankPhp/1.0.0).
 
 ### References
 
