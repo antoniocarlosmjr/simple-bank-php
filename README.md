@@ -10,18 +10,26 @@ API RESTFul responsible for realize create accounts, deposit, withdraws and tran
 
 ### Configuration
 
-Em desenvolvimento
+Clone the project on your machine and after cloning create the `.env` in the `/src` directory based on the `.env.example`.
+
+After that, run the command `docker-compose build` to build the imagens and right after `docker-compose up -d` to create and start the containers.
+
+After that, run the command `docker-compose exec app_php php artisan migrate` to run the database migrations.
+
+To configure swagger run the command `docker exec -it api_php php artisan swagger-lume:generate`.
+
+Okay, now we have our system running at http://localhost:8000. :smile:
 
 ### Tests
 
-  * Testes automatizados
-  * Testes na plataforma adicionada
+  * Testes automatizados - Em desenvolvimento
+  * Testes na plataforma adicionada - Em desenvolvimento
 
 ### Diagram of Architecture
 
 Em desenvolvimento
 
-### Organization of Database
+### Diagram of Database
 
 The relational project is structured according to the creation of four tables represented as follows:
 
