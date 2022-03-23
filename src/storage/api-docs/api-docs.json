@@ -1,0 +1,204 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger Simple Bank Php",
+        "description": "Service responsible for make deposit, transfer and withdraw",
+        "termsOfService": "",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/balance": {
+            "get": {
+                "tags": [
+                    "Balance"
+                ],
+                "summary": "Get balance of a account.",
+                "description": "Return a balance in a account of user",
+                "operationId": "8e6bac8f902f76782c5c8922c7e6659d",
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "query",
+                        "description": "Account id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "int"
+                                },
+                                "example": 50
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "422": {
+                        "description": "Invalid request body"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/event": {
+            "post": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Make a transation of deposit, withdraw or transfer.\nFor deposit, we can create a new account with inicial balance.",
+                "description": "Make a event in bank",
+                "operationId": "a96541d93def932ed8bab11c247daa5f",
+                "requestBody": {
+                    "request": "CreateEventRequest",
+                    "description": "Create event request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateEventRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "destination": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "description": "Account id",
+                                                        "type": "string"
+                                                    },
+                                                    "balance": {
+                                                        "description": "balance in account",
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "422": {
+                        "description": "Invalid request body"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/reset": {
+            "post": {
+                "tags": [
+                    "Reset"
+                ],
+                "summary": "Reset state before starting tests.",
+                "description": "Reset state before starting tests",
+                "operationId": "b33327d11da5a4d6f16f895aaa86b1fe",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": "OK"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "422": {
+                        "description": "Invalid request body"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AccountRequest": {
+                "required": [
+                    "account_id"
+                ],
+                "properties": {
+                    "account_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "example": {
+                    "account_id": 55
+                }
+            },
+            "CreateEventRequest": {
+                "required": [
+                    "type",
+                    "amount"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "integer",
+                        "enum": [
+                            "deposit",
+                            "withdraw",
+                            "transfer"
+                        ]
+                    },
+                    "destination": {
+                        "description": "required if type is deposit or transfer",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "description": "required if type is withdraw or transfer",
+                        "type": "string"
+                    },
+                    "amount": {
+                        "type": "float"
+                    }
+                },
+                "type": "object",
+                "example": {
+                    "type": "deposit",
+                    "destination": "10",
+                    "amount": 50
+                }
+            }
+        }
+    }
+}
