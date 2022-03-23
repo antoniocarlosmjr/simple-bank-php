@@ -20,16 +20,14 @@ To configure swagger run the command `docker exec -it api_php php artisan swagge
 
 Okay, now we have our system running at http://localhost:8000. :smile:
 
-### Tests
 
-  * Automated tests
+### Automated tests
   
-  For execute tests run the command `docker exec -it api_php ./vendor/bin/phpunit`
+For execute tests run the command `docker exec -it api_php ./vendor/bin/phpunit`
   
-  ![testes-automatizados](https://user-images.githubusercontent.com/26749585/159672744-c9cdd404-b70b-43db-b565-1653d7cc1c54.png)
+![testes-automatizados](https://user-images.githubusercontent.com/26749585/159672744-c9cdd404-b70b-43db-b565-1653d7cc1c54.png)
 
-  * Tests in ipkiss
-  
+### Tests in ipkiss
   
 
 ### Diagram of Architecture
