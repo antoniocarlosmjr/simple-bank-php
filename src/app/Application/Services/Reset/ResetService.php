@@ -14,10 +14,11 @@ class ResetService
     /**
      * Clear database and reset status before tests and begin API.
      *
-     * @return void
+     * @return bool
      */
-    public function reset(): void
+    public function reset(): bool
     {
         $this->resetRepository->clearRecordsInTables();
+        return true;
     }
 }

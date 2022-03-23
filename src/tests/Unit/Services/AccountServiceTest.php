@@ -107,7 +107,6 @@ class AccountServiceTest extends TestCase
         $service->decreaseMoney($accountExample, $valueToDecrease);
     }
 
-
     private function createAccountExample(?float $balanceInicial = null): AccountEntity
     {
         $faker = Factory::create();

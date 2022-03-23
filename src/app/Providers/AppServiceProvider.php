@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Application\Repositories\AccountRepositoryInterface;
 use App\Application\Repositories\EventRepositoryInterface;
 use App\Application\Repositories\ResetRepositoryInterface;
+use App\Application\Services\Event\Contracts\EventStrategy;
+use App\Application\Services\Event\EventContext;
 use App\Infra\Repositories\AccountRepositoryDatabase;
 use App\Infra\Repositories\EventRepositoryDatabase;
 use App\Infra\Repositories\ResetRepositoryDatabase;

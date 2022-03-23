@@ -46,7 +46,7 @@ class EventDepositStrategy implements EventStrategy
             }
 
             $accountEntity = $accountService->increaseMoney($accountEntity, $eventEntity->getAmount());
-            $eventEntity->setType(EventStatusEnum::COMPLETED);
+            $eventEntity->setStatus(EventStatusEnum::COMPLETED);
             $eventEntity = $this->eventRepository->update($eventEntity);
             DB::commit();
 

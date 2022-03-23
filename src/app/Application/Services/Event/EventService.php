@@ -7,6 +7,7 @@ use App\Application\Repositories\EventRepositoryInterface;
 use App\Domain\Entities\Event\EventEntity;
 use App\Enumerators\EventTypesEnum;
 use App\Exceptions\EventTypeInvalidException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 
 class EventService
 {
@@ -21,7 +22,7 @@ class EventService
      *
      * @param EventEntity $eventEntity
      * @return array
-     * @throws EventTypeInvalidException
+     * @throws EventTypeInvalidException|BindingResolutionException
      */
     public function createEvent(EventEntity $eventEntity): array
     {

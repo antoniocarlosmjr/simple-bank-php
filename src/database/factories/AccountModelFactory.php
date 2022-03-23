@@ -13,6 +13,7 @@ class AccountModelFactory extends Factory
     public function definition(): array
     {
         return [
+            'id' => $this->faker->randomNumber(),
             'type'   => $this->faker->randomElements(
                 [
                     AccountTypesEnum::SAVING,
