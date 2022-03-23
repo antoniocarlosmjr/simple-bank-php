@@ -10,7 +10,7 @@ API RESTFul responsible for realize create accounts, deposit, withdraws and tran
 
 ### Configuration
 
-Clone the project on your machine and after cloning create the `.env` in the `/src` directory based on the `.env.example`.
+Clone the project on your machine and after cloning create the `.env` in the `/src` directory based on the `.env.example` and execute command `composer install` for instalacion of dependencies.
 
 After that, run the command `docker-compose build` to build the imagens and right after `docker-compose up -d` to create and start the containers.
 
