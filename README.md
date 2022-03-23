@@ -27,6 +27,10 @@ For execute tests run the command `docker exec -it api_php ./vendor/bin/phpunit`
   
 ![testes-automatizados](https://user-images.githubusercontent.com/26749585/159672744-c9cdd404-b70b-43db-b565-1653d7cc1c54.png)
 
+### Evidence tests Plataform
+
+![ksnip_20220323-122935](https://user-images.githubusercontent.com/26749585/159736215-490f9a8b-5c12-4e3c-843a-456804bab771.png)
+
 ### Diagram of Architecture
 
 The flow and architecture of the project was created based on a clean architecture adaptation as shown in the figure below.
