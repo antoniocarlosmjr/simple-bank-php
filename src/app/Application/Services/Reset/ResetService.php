@@ -2,19 +2,22 @@
 
 namespace App\Application\Services\Reset;
 
-use App\Driver\Models\AccountModel;
-use App\Driver\Models\EventModel;
+use App\Application\Repositories\ResetRepositoryInterface;
 
 class ResetService
 {
+    public function __construct(
+        protected ResetRepositoryInterface $resetRepository
+    ) {
+    }
+
     /**
      * Clear database and reset status before tests and begin API.
      *
      * @return void
      */
-    public function reset()
+    public function reset(): void
     {
-        AccountModel::truncate();
-        EventModel::truncate();
+        $this->resetRepository->clearRecordsInTables();
     }
 }
